@@ -59,7 +59,7 @@ COPY --from=build /etc/apt/sources.list.d/ /etc/apt/sources.list.d
 # renovate: datasource=github-tags depName=docker/cli extractVersion=^v(?<version>.*)$
 ENV DOCKERCLI_VERSION=24.0.3
 # renovate: datasource=github-tags depName=docker/buildx extractVersion=^v(?<version>.*)$
-ENV DOCKERBUILDX_VERSION=0.10.5
+ENV DOCKERBUILDX_VERSION=0.11.1
 # renovate: datasource=github-tags depName=docker/compose extractVersion=^v(?<version>.*)$
 ENV DOCKERCOMPOSE_VERSION=2.18.1
 
