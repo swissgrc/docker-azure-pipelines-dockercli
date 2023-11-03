@@ -77,6 +77,6 @@ RUN apt-get update -y && \
 # Add Docker plugins to path
 ENV PATH="$PATH:/usr/libexec/docker/cli-plugins"
 # Smoke test
-RUN echo $PATH && \
+RUN echo "$PATH" && \
   docker-buildx version && \
   docker-compose version
