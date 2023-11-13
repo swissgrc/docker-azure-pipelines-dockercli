@@ -1,5 +1,5 @@
 # Base image containing dependencies used in builder and final image
-FROM debian:12.1-slim AS base
+FROM debian:12.2-slim AS base
 
 # Make sure to fail due to an error at any stage in shell pipes
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
@@ -22,7 +22,7 @@ FROM base AS build
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # renovate: datasource=repology depName=debian_12/curl versioning=loose
-ENV CURL_VERSION=7.88.1-10+deb12u1
+ENV CURL_VERSION=7.88.1-10+deb12u4
 # renovate: datasource=repology depName=debian_12/lsb-release versioning=loose
 ENV LSBRELEASE_VERSION=12.0-1
 # renovate: datasource=repology depName=debian_12/gnupg2 versioning=loose
@@ -57,7 +57,7 @@ COPY --from=build /etc/apt/sources.list.d/ /etc/apt/sources.list.d
 # Install Docker CLI
 
 # renovate: datasource=github-tags depName=docker/cli extractVersion=^v(?<version>.*)$
-ENV DOCKERCLI_VERSION=24.0.6
+ENV DOCKERCLI_VERSION=24.0.7
 # renovate: datasource=github-tags depName=docker/buildx extractVersion=^v(?<version>.*)$
 ENV DOCKERBUILDX_VERSION=0.11.2
 # renovate: datasource=github-tags depName=docker/compose extractVersion=^v(?<version>.*)$
@@ -77,6 +77,6 @@ RUN apt-get update -y && \
 # Add Docker plugins to path
 ENV PATH="$PATH:/usr/libexec/docker/cli-plugins"
 # Smoke test
-RUN echo $PATH && \
+RUN echo "$PATH" && \
   docker-buildx version && \
   docker-compose version
