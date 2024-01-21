@@ -1,5 +1,5 @@
 # Base image containing dependencies used in builder and final image
-FROM debian:12.2-slim AS base
+FROM debian:12.4-slim AS base
 
 # Make sure to fail due to an error at any stage in shell pipes
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
@@ -21,11 +21,11 @@ FROM base AS build
 # Make sure to fail due to an error at any stage in shell pipes
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
-# renovate: datasource=repology depName=debian_12/curl versioning=loose
-ENV CURL_VERSION=7.88.1-10+deb12u4
-# renovate: datasource=repology depName=debian_12/lsb-release versioning=loose
+# renovate: datasource=repology depName=debian_12/curl versioning=deb
+ENV CURL_VERSION=7.88.1-10+deb12u5
+# renovate: datasource=repology depName=debian_12/lsb-release versioning=deb
 ENV LSBRELEASE_VERSION=12.0-1
-# renovate: datasource=repology depName=debian_12/gnupg2 versioning=loose
+# renovate: datasource=repology depName=debian_12/gnupg2 versioning=deb
 ENV GNUPG_VERSION=2.2.40-1.1
 
 RUN apt-get update -y && \
@@ -57,11 +57,11 @@ COPY --from=build /etc/apt/sources.list.d/ /etc/apt/sources.list.d
 # Install Docker CLI
 
 # renovate: datasource=github-tags depName=docker/cli extractVersion=^v(?<version>.*)$
-ENV DOCKERCLI_VERSION=24.0.7
+ENV DOCKERCLI_VERSION=25.0.0
 # renovate: datasource=github-tags depName=docker/buildx extractVersion=^v(?<version>.*)$
-ENV DOCKERBUILDX_VERSION=0.11.2
+ENV DOCKERBUILDX_VERSION=0.12.1
 # renovate: datasource=github-tags depName=docker/compose extractVersion=^v(?<version>.*)$
-ENV DOCKERCOMPOSE_VERSION=2.21.0
+ENV DOCKERCOMPOSE_VERSION=2.24.1
 
 RUN apt-get update -y && \
   # Install Docker CLI
