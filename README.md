@@ -46,5 +46,6 @@ The following example shows the container used for a deployment step which shows
 | 24.0.6     | [Docker CLI 24.0.6](https://docs.docker.com/engine/release-notes/24.0/#2406) | debian:12.1-slim | 24.0.6     | 2.21.0         | 0.11.2 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/swissgrc/azure-pipelines-dockercli/24.0.6?style=flat-square)   |
 | 24.0.7     | [Docker CLI 24.0.7](https://docs.docker.com/engine/release-notes/24.0/#2407) | debian:12.2-slim | 24.0.7     | 2.21.0         | 0.11.2 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/swissgrc/azure-pipelines-dockercli/24.0.7?style=flat-square)   |
 | 25.0.0     | [Docker CLI 25.0.0](https://docs.docker.com/engine/release-notes/25.0/#2500) | debian:12.4-slim | 25.0.0     | 2.24.1         | 0.12.1 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/swissgrc/azure-pipelines-dockercli/25.0.0?style=flat-square)   |
+| 25.0.3     | [Docker CLI 25.0.3](https://docs.docker.com/engine/release-notes/25.0/#2503) | debian:12.4-slim | 25.0.3     | 2.24.2         | 0.12.1 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/swissgrc/azure-pipelines-dockercli/25.0.3?style=flat-square)   |
 
 [Azure Pipelines container jobs]: https://docs.microsoft.com/en-us/azure/devops/pipelines/process/container-phases
