@@ -33,7 +33,7 @@ RUN apt-get update -y && \
   apt-get install -y --no-install-recommends curl=${CURL_VERSION} lsb-release=${LSBRELEASE_VERSION} gnupg=${GNUPG_VERSION} && \
   # Add Dockers public key
   mkdir -p /etc/apt/keyrings && \
-  curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg && \
+  curl --proto "=https" -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg && \
   # Add Dockers APT repository to the list of sources
   echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null && \
   rm -rf /tmp/*
@@ -57,11 +57,11 @@ COPY --from=build /etc/apt/sources.list.d/ /etc/apt/sources.list.d
 # Install Docker CLI
 
 # renovate: datasource=github-tags depName=docker/cli extractVersion=^v(?<version>.*)$
-ENV DOCKERCLI_VERSION=26.1.4
+ENV DOCKERCLI_VERSION=27.0.1
 # renovate: datasource=github-tags depName=docker/buildx extractVersion=^v(?<version>.*)$
-ENV DOCKERBUILDX_VERSION=0.14.1
+ENV DOCKERBUILDX_VERSION=0.15.1
 # renovate: datasource=github-tags depName=docker/compose extractVersion=^v(?<version>.*)$
-ENV DOCKERCOMPOSE_VERSION=2.27.1
+ENV DOCKERCOMPOSE_VERSION=2.28.1
 
 RUN apt-get update -y && \
   # Install Docker CLI
