@@ -30,12 +30,18 @@ ENV GNUPG_VERSION=2.2.40-1.1
 
 RUN apt-get update -y && \
   # Install necessary dependencies
-  apt-get install -y --no-install-recommends curl=${CURL_VERSION} lsb-release=${LSBRELEASE_VERSION} gnupg=${GNUPG_VERSION} && \
+  apt-get install -y --no-install-recommends \
+    curl=${CURL_VERSION} \
+    gnupg=${GNUPG_VERSION} \
+    lsb-release=${LSBRELEASE_VERSION} && \
   # Add Dockers public key
   mkdir -p /etc/apt/keyrings && \
-  curl --proto "=https" -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg && \
+  curl --proto "=https" -fsSL https://download.docker.com/linux/debian/gpg \
+    | gpg --dearmor -o /etc/apt/keyrings/docker.gpg && \
   # Add Dockers APT repository to the list of sources
-  echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null && \
+  echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian $(lsb_release -cs) stable" \
+    | tee /etc/apt/sources.list.d/docker.list \
+    > /dev/null && \
   rm -rf /tmp/*
 
 # Final image
@@ -65,7 +71,10 @@ ENV DOCKERCOMPOSE_VERSION=2.29.1
 
 RUN apt-get update -y && \
   # Install Docker CLI
-  apt-get install -y --no-install-recommends docker-ce-cli=5:${DOCKERCLI_VERSION}-1~debian.12~bookworm docker-buildx-plugin=${DOCKERBUILDX_VERSION}-1~debian.12~bookworm docker-compose-plugin=${DOCKERCOMPOSE_VERSION}-1~debian.12~bookworm && \
+  apt-get install -y --no-install-recommends \
+    docker-buildx-plugin=${DOCKERBUILDX_VERSION}-1~debian.12~bookworm \
+    docker-ce-cli=5:${DOCKERCLI_VERSION}-1~debian.12~bookworm \
+    docker-compose-plugin=${DOCKERCOMPOSE_VERSION}-1~debian.12~bookworm && \
   # Clean up
   apt-get clean && \
   rm -rf /var/lib/apt/lists/* && \
