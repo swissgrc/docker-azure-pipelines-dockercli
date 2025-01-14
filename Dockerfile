@@ -1,5 +1,5 @@
 # Base image containing dependencies used in builder and final image
-FROM debian:12.8-slim AS base
+FROM debian:12.9-slim AS base
 
 # Make sure to fail due to an error at any stage in shell pipes
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
@@ -63,11 +63,11 @@ COPY --from=build /etc/apt/sources.list.d/ /etc/apt/sources.list.d
 # Install Docker CLI
 
 # renovate: datasource=github-tags depName=docker/cli extractVersion=^v(?<version>.*)$
-ENV DOCKERCLI_VERSION=27.4.1
+ENV DOCKERCLI_VERSION=27.5.0
 # renovate: datasource=github-tags depName=docker/buildx extractVersion=^v(?<version>.*)$
 ENV DOCKERBUILDX_VERSION=0.19.3
 # renovate: datasource=github-tags depName=docker/compose extractVersion=^v(?<version>.*)$
-ENV DOCKERCOMPOSE_VERSION=2.32.1
+ENV DOCKERCOMPOSE_VERSION=2.32.3
 
 RUN apt-get update -y && \
   # Install Docker CLI
