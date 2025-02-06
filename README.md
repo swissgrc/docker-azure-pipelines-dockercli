@@ -42,6 +42,6 @@ The following example shows the container used for a deployment step which shows
 |------------|---------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | latest     | Latest stable release (from `main` branch)        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/swissgrc/azure-pipelines-dockercli/latest?style=flat-square)   |
 | unstable   | Latest unstable release (from `develop` branch)   | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/swissgrc/azure-pipelines-dockercli/unstable?style=flat-square) |
-| x.y.z     | Image for a specific version of Docker CLI         |                                                                                                                                    |
+| x.y.z      | Image for a specific version of Docker CLI        |                                                                                                                                    |
 
 [Azure Pipelines container jobs]: https://docs.microsoft.com/en-us/azure/devops/pipelines/process/container-phases
