@@ -31,12 +31,13 @@ The following example shows the container used for a deployment step which shows
                     docker --version
 ```
 
-### Included Software
+## Included Software
+- Debian 12 as base image
 - Docker CLI
 - Docker Compose
 - BuildX
 
-### Tags
+## Tags
 
 | Tag        | Description                                       | Size                                                                                                                               |
 |------------|---------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------|
