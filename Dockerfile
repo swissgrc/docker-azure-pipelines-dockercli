@@ -63,11 +63,11 @@ COPY --from=build /etc/apt/sources.list.d/ /etc/apt/sources.list.d
 # Install Docker CLI
 
 # renovate: datasource=github-tags depName=docker/cli extractVersion=^v(?<version>.*)$
-ENV DOCKERCLI_VERSION=28.0.0
+ENV DOCKERCLI_VERSION=28.0.1
 # renovate: datasource=github-tags depName=docker/buildx extractVersion=^v(?<version>.*)$
-ENV DOCKERBUILDX_VERSION=0.21.0
+ENV DOCKERBUILDX_VERSION=0.21.1
 # renovate: datasource=github-tags depName=docker/compose extractVersion=^v(?<version>.*)$
-ENV DOCKERCOMPOSE_VERSION=2.33.0
+ENV DOCKERCOMPOSE_VERSION=2.33.1
 
 RUN apt-get update -y && \
   # Install Docker CLI
