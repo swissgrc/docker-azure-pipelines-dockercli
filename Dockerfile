@@ -67,7 +67,7 @@ ENV DOCKERCLI_VERSION=28.3.1
 # renovate: datasource=github-tags depName=docker/buildx extractVersion=^v(?<version>.*)$
 ENV DOCKERBUILDX_VERSION=0.26.1
 # renovate: datasource=github-tags depName=docker/compose extractVersion=^v(?<version>.*)$
-ENV DOCKERCOMPOSE_VERSION=2.39.2
+ENV DOCKERCOMPOSE_VERSION=2.39.1
 
 RUN apt-get update -y && \
   # Install Docker CLI
