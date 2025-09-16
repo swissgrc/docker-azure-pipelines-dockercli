@@ -5,7 +5,7 @@ FROM debian:12.11-slim AS base
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # renovate: datasource=repology depName=debian_12/ca-certificates versioning=loose
-ENV CACERTIFICATES_VERSION=20230311
+ENV CACERTIFICATES_VERSION=20230311+deb12u1
 
 RUN apt-get update -y && \
   # Install necessary dependencies
