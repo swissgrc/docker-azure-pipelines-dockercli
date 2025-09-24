@@ -72,7 +72,7 @@ ENV DOCKERCOMPOSE_VERSION=2.39.1
 RUN apt-get update -y && \
   # Install Docker CLI
   apt-get install -y --no-install-recommends \
-    docker-buildx-plugin=${DOCKERBUILDX_VERSION}-1~debian.12~bookworm \
+    docker-buildx-plugin=${DOCKERBUILDX_VERSION}-0~debian.12~bookworm \
     docker-ce-cli=5:${DOCKERCLI_VERSION}-1~debian.12~bookworm \
     docker-compose-plugin=${DOCKERCOMPOSE_VERSION}-1~debian.12~bookworm && \
   # Clean up
