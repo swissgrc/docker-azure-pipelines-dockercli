@@ -1,11 +1,11 @@
 # Base image containing dependencies used in builder and final image
-FROM debian:12.11-slim AS base
+FROM debian:12.12-slim AS base
 
 # Make sure to fail due to an error at any stage in shell pipes
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # renovate: datasource=repology depName=debian_12/ca-certificates versioning=loose
-ENV CACERTIFICATES_VERSION=20230311
+ENV CACERTIFICATES_VERSION=20230311+deb12u1
 
 RUN apt-get update -y && \
   # Install necessary dependencies
@@ -22,11 +22,11 @@ FROM base AS build
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # renovate: datasource=repology depName=debian_12/curl versioning=deb
-ENV CURL_VERSION=7.88.1-10+deb12u12
+ENV CURL_VERSION=7.88.1-10+deb12u14
 # renovate: datasource=repology depName=debian_12/lsb-release versioning=deb
 ENV LSBRELEASE_VERSION=12.0-1
 # renovate: datasource=repology depName=debian_12/gnupg2 versioning=deb
-ENV GNUPG_VERSION=2.2.40-1.1
+ENV GNUPG_VERSION=2.2.40-1.1+deb12u1
 
 RUN apt-get update -y && \
   # Install necessary dependencies
@@ -63,18 +63,18 @@ COPY --from=build /etc/apt/sources.list.d/ /etc/apt/sources.list.d
 # Install Docker CLI
 
 # renovate: datasource=github-tags depName=docker/cli extractVersion=^v(?<version>.*)$
-ENV DOCKERCLI_VERSION=28.3.3
+ENV DOCKERCLI_VERSION=28.4.0
 # renovate: datasource=github-tags depName=docker/buildx extractVersion=^v(?<version>.*)$
-ENV DOCKERBUILDX_VERSION=0.26.1
+ENV DOCKERBUILDX_VERSION=0.28.0
 # renovate: datasource=github-tags depName=docker/compose extractVersion=^v(?<version>.*)$
-ENV DOCKERCOMPOSE_VERSION=2.39.1
+ENV DOCKERCOMPOSE_VERSION=2.39.4
 
 RUN apt-get update -y && \
   # Install Docker CLI
   apt-get install -y --no-install-recommends \
-    docker-buildx-plugin=${DOCKERBUILDX_VERSION}-1~debian.12~bookworm \
+    docker-buildx-plugin=${DOCKERBUILDX_VERSION}-0~debian.12~bookworm \
     docker-ce-cli=5:${DOCKERCLI_VERSION}-1~debian.12~bookworm \
-    docker-compose-plugin=${DOCKERCOMPOSE_VERSION}-1~debian.12~bookworm && \
+    docker-compose-plugin=${DOCKERCOMPOSE_VERSION}-0~debian.12~bookworm && \
   # Clean up
   apt-get clean && \
   rm -rf /var/lib/apt/lists/* && \
