@@ -63,18 +63,18 @@ COPY --from=build /etc/apt/sources.list.d/ /etc/apt/sources.list.d
 # Install Docker CLI
 
 # renovate: datasource=github-tags depName=docker/cli extractVersion=^v(?<version>.*)$
-ENV DOCKERCLI_VERSION=28.4.0
+ENV DOCKERCLI_VERSION=28.5.1
 # renovate: datasource=github-tags depName=docker/buildx extractVersion=^v(?<version>.*)$
-ENV DOCKERBUILDX_VERSION=0.28.0
+ENV DOCKERBUILDX_VERSION=0.29.1
 # renovate: datasource=github-tags depName=docker/compose extractVersion=^v(?<version>.*)$
-ENV DOCKERCOMPOSE_VERSION=2.39.4
+ENV DOCKERCOMPOSE_VERSION=2.40.1
 
 RUN apt-get update -y && \
   # Install Docker CLI
   apt-get install -y --no-install-recommends \
-    docker-buildx-plugin=${DOCKERBUILDX_VERSION}-0~debian.12~bookworm \
+    docker-buildx-plugin=${DOCKERBUILDX_VERSION}-1~debian.12~bookworm \
     docker-ce-cli=5:${DOCKERCLI_VERSION}-1~debian.12~bookworm \
-    docker-compose-plugin=${DOCKERCOMPOSE_VERSION}-0~debian.12~bookworm && \
+    docker-compose-plugin=${DOCKERCOMPOSE_VERSION}-1~debian.12~bookworm && \
   # Clean up
   apt-get clean && \
   rm -rf /var/lib/apt/lists/* && \
