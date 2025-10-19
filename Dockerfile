@@ -74,7 +74,7 @@ RUN apt-get update -y && \
   apt-get install -y --no-install-recommends \
     docker-buildx-plugin=${DOCKERBUILDX_VERSION}-0~debian.12~bookworm \
     docker-ce-cli=5:${DOCKERCLI_VERSION}-1~debian.12~bookworm \
-    docker-compose-plugin=${DOCKERCOMPOSE_VERSION}-0~debian.12~bookworm && \
+    docker-compose-plugin=${DOCKERCOMPOSE_VERSION}-1~debian.12~bookworm && \
   # Clean up
   apt-get clean && \
   rm -rf /var/lib/apt/lists/* && \
